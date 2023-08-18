@@ -4,9 +4,9 @@ import React, {useState} from 'react';
 function App() {
 
   const [toDos, setToDos] = useState([
-    {name: "Buy Shopping", priority: "high"},
-    {name: "Clean Kitchen", priority: "low"},
-    {name: "Water Plants", priority: "high"}
+    {name: "Buy Shopping", priorityHigh: true},
+    {name: "Clean Kitchen", priorityHigh: false},
+    {name: "Water Plants", priorityHigh: true}
   ])
 
   const [newToDo, setNewToDo] = useState("")
@@ -18,14 +18,15 @@ function App() {
   const saveNewToDo = (event) => {
     event.preventDefault()
     const copyTodos= [...toDos]
-    copyTodos.push({name: newToDo, priority: "low"})
+    copyTodos.push({name: newToDo, priorityHigh: true})
     setToDos(copyTodos)
   }
 
   const toDoNodes = toDos.map((toDo, index) => {
     return (
-      <li key={index}>
+      <li key={index} className={toDo.priorityHigh ? "high-priority" : "low-priority"}>
         <span>{toDo.name}</span>
+        {toDo.priorityHigh ? <span>High Priority!</span> : <span>Low Priority</span>}
       </li>
     )
   })

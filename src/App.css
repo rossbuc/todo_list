@@ -25,11 +25,10 @@ li button {
   padding: 10px;
   cursor: pointer;
 }
-li.purchased {
+li.low-priority {
   border: 2px solid #1a681e;
-  color: #1a681e;
 }
-li.not-purchased {
+li.high-priority {
   border: 2px solid #f2360c;
 }
 input[type="text"] {
