@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
 
 function App() {
+
+  const [toDos, setToDos] = useState([
+    {name: "Buy Shopping", priority: "high"},
+    {name: "Clean Kitchen", priority: "low"},
+    {name: "Water Plants", priority: "high"}
+  ])
+
+  const toDoNodes = toDos.map((toDo, index) => {
+    return (
+      <li key={index}>
+        <span>{toDo.name}</span>
+      </li>
+    )
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>ToDo List</h1>
+      <hr></hr>
+
+      <ul>
+        {toDoNodes}
+      </ul>
     </div>
   );
 }
